@@ -29,8 +29,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and Push Docker image
-        run: docker build -t your-dockerhub-username/myapp .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/myapp .
             
 
       - name: Deploy to Ubuntu server
-        run: docker push your-dockerhub-username/myapp 
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/myapp 
