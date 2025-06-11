@@ -39,7 +39,7 @@ jobs:
             --platform linux/amd64 \
             --tag ${{ secrets.DOCKER_USERNAME }}/node-app:latest \
             --push \
-            ./node-app
+            .
 
       - name: Deploy to Ubuntu server
         uses: appleboy/ssh-action@master
