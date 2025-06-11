@@ -35,20 +35,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and Push Docker image
-        run: |
-          docker buildx build \
-            --push \
-            --tag ${{ secrets.DOCKER_USERNAME }}/node-app:latest \
+        run: docker build -t your-dockerhub-username/myapp .
             .
 
       - name: Deploy to Ubuntu server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/node-app:latest
-            docker stop node-app || true
-            docker rm node-app || true
-            docker run -d --name node-app -p 80:80 ${{ secrets.DOCKER_USERNAME }}/node-app:latest
+        run: docker push your-dockerhub-username/myapp 
