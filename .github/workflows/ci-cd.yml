@@ -33,13 +33,12 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-            - name: Build and Push Docker image
+      - name: Build and Push Docker image
         run: |
           docker buildx build \
             --push \
-            --tag ${{ secrets.DOCKER_USERNAME }}/node-app:latest \ .
-
-
+            --tag ${{ secrets.DOCKER_USERNAME }}/node-app:latest \
+            .
 
       - name: Deploy to Ubuntu server
         uses: appleboy/ssh-action@master
