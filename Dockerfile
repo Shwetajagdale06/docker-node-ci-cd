@@ -1,0 +1,17 @@
+# Use base image
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy files
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+
+# Expose port
+EXPOSE 80
+
+# Run app
+CMD ["npm", "start"]
