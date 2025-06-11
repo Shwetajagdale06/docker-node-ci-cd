@@ -32,8 +32,10 @@ jobs:
 
     - name: Build and Push Docker image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/node-app:latest .
-        docker push ${{ secrets.DOCKER_USERNAME }}/node-app:latest
+       docker buildx build \
+            --push \
+            --tag ${{ secrets.DOCKER_USERNAME }}/node-app:latest \
+            .
 
     - name: Deploy to Ubuntu server
       uses: appleboy/ssh-action@master
