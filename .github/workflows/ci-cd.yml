@@ -36,5 +36,5 @@ jobs:
       - name: Build and Push Docker image
         run: |
           docker buildx build . \
-            --tag shweta064/node-app:latest \
+            --tag shweta064/node-app1:latest \
             --push
