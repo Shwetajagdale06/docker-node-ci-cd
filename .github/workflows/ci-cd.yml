@@ -37,8 +37,7 @@ jobs:
         run: |
           docker buildx build \
             --push \
-            --tag ${{ secrets.DOCKER_USERNAME }}/node-app:latest \
-            .
+            --tag ${{ secrets.DOCKER_USERNAME }}/node-app:latest            
 
       - name: Deploy to Ubuntu server
         uses: appleboy/ssh-action@master
